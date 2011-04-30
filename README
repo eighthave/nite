@@ -1,0 +1,6 @@
+
+wrapper around PrimeSense NITE binary middleware for OpenNI to support the
+PrimeSense Xbox Kinect camera
+
+http://www.openni.org/downloadfiles/openni-compliant-middleware-binaries/33-latest-unstable
+
