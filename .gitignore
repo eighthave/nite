@@ -1,0 +1,6 @@
+debian/nite
+debian/files
+debian/nite.debhelper.log
+debian/nite.substvars
+Nite-1.3.1.5
+NITE-Bin-Linux32-v1.3.1.5.tar.bz2
