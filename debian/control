@@ -1,0 +1,18 @@
+Source: nite
+Priority: optional
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Uploaders: Hans-Christoph Steiner <hans@eds.org>
+Build-Depends: debhelper (>= 7.0.50~),
+               python,
+               make
+Standards-Version: 3.9.1
+Homepage: http://www.openni.org
+
+Package: nite
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         openni
+Description: library to support 'Natural Interaction' for Kinect cameras
+ binary blob :( middleware for supporting the PrimeSense Xbox Kinect camera
+ for OpenNI.

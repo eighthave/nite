@@ -1,0 +1,8 @@
+#!/bin/sh
+
+/usr/bin/niLicense -r PrimeSense 0KOIk2JeIBYClPWVnMoRKn5cdY4=
+
+/usr/bin/niReg /usr/lib/libXnVFeatures.so /etc/primesense/Features_1_3_0
+/usr/bin/niReg /usr/lib/libXnVFeatures_1_3_1.so /etc/primesense/Features_1_3_1
+/usr/bin/niReg /usr/lib/libXnVHandGenerator.so /etc/primesense/Hands_1_3_0
+/usr/bin/niReg /usr/lib/libXnVHandGenerator_1_3_1.so /etc/primesense/Hands_1_3_1

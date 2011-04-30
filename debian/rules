@@ -1,0 +1,48 @@
+#!/usr/bin/make -f
+
+packageinstall = $(CURDIR)/debian/nite
+NITEFILES = $(CURDIR)/Nite-1.3.1.5
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	wget -O NITE-Bin-Linux32-v1.3.1.5.tar.bz2 \
+		http://www.openni.org/downloadfiles/openni-compliant-middleware-binaries/latest-unstable/112-primesense-nite-unstable-build-for-ubuntu-10-10-x86-32-bit-v1-3-1/download
+	tar -xjf NITE-Bin-Linux32-v1.3.1.5.tar.bz2
+
+override_dh_auto_install:
+	install -d $(packageinstall)/usr/include/nite
+	install -p $(NITEFILES)/Include/*.h \
+		$(packageinstall)/usr/include/nite
+	install -d $(packageinstall)/etc/primesense/Features_1_3_0
+	install -p $(NITEFILES)/Features_1_3_0/Data/FeatureExtraction.ini \
+		$(NITEFILES)/Features_1_3_0/Data/h.dat \
+		$(NITEFILES)/Features_1_3_0/Data/s.dat \
+		$(packageinstall)/etc/primesense/Features_1_3_0
+	install -d $(packageinstall)/usr/lib
+	install -p $(NITEFILES)/Features_1_3_0/Bin/libXnVFeatures.so \
+		$(packageinstall)/usr/lib
+	install -d $(packageinstall)/etc/primesense/Features_1_3_1
+	install -p $(NITEFILES)/Features_1_3_1/Data/FeatureExtraction.ini \
+		$(NITEFILES)/Features_1_3_1/Data/h.dat \
+		$(NITEFILES)/Features_1_3_1/Data/s.dat \
+		$(packageinstall)/etc/primesense/Features_1_3_1
+	install -p $(NITEFILES)/Features_1_3_1/Bin/libXnVFeatures_1_3_1.so \
+		$(packageinstall)/usr/lib
+	install -d $(packageinstall)/etc/primesense/Hands_1_3_0
+	install -p $(NITEFILES)/Hands_1_3_0/Data/Nite.ini \
+		$(packageinstall)/etc/primesense/Hands_1_3_0
+	install -p $(NITEFILES)/Hands_1_3_0/Bin/libXnVHandGenerator.so \
+		$(packageinstall)/usr/lib
+	install -d $(packageinstall)/etc/primesense/Hands_1_3_1
+	install -p $(NITEFILES)/Hands_1_3_1/Data/Nite.ini \
+		$(packageinstall)/etc/primesense/Hands_1_3_1
+	install -p $(NITEFILES)/Hands_1_3_1/Bin/libXnVHandGenerator_1_3_1.so \
+		$(packageinstall)/usr/lib
+
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf -- $(CURDIR)/Nite-1.3.1.5
+	rm -rf -- $(CURDIR)/NITE-Bin-Linux32-v1.3.1.5.tar.bz2

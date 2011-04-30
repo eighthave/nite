@@ -1,0 +1,7 @@
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=135
+Name: nite
+Maintainer: Hans-Christoph Steiner
+Source: http://www.openni.org/downloadfiles/openni-compliant-middleware-binaries/33-latest-unstable
+
+Copyright: 2010-2011, PrimeSense Ltd.
+License: PrimeSense Proprietary

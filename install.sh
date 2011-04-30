@@ -6,43 +6,43 @@ else
         LIBEXT="so"
 fi
 
-cp Bin/libXnVNite*$LIBEXT /usr/lib
-cp Bin/libXnVCNITE*$LIBEXT /usr/lib
+cp Bin/libXnVNite*$LIBEXT ${DESTDIR}/usr/lib
+cp Bin/libXnVCNITE*$LIBEXT ${DESTDIR}/usr/lib
 if [ -e Makefile ]
 then
-	mkdir -p /usr/include/nite
-	cp Include/* /usr/include/nite
+	mkdir -p ${DESTDIR}/usr/include/nite
+	cp Include/* ${DESTDIR}/usr/include/nite
 fi
 for fdir in `ls -1 | grep Features`
 do
-	mkdir -p /usr/etc/primesense/$fdir
-	cp $fdir/Data/* /usr/etc/primesense/$fdir
+	mkdir -p ${DESTDIR}/etc/primesense/$fdir
+	cp $fdir/Data/* ${DESTDIR}/etc/primesense/$fdir
 	for so in `ls -1 $fdir/Bin/lib*$LIBEXT`
 	do
 		base=`basename $so`
-		cp $so /usr/lib
-		niReg /usr/lib/$base /usr/etc/primesense/$fdir
+		cp $so ${DESTDIR}/usr/lib
+		niReg ${DESTDIR}/usr/lib/$base ${DESTDIR}/etc/primesense/$fdir
 	done
 done
 for hdir in `ls -1 | grep Hands`
 do
-	mkdir -p /usr/etc/primesense/$hdir
-	cp $hdir/Data/* /usr/etc/primesense/$hdir
+	mkdir -p ${DESTDIR}/etc/primesense/$hdir
+	cp $hdir/Data/* ${DESTDIR}/etc/primesense/$hdir
 	for so in `ls -1 $hdir/Bin/lib*$LIBEXT`
 	do
 		base=`basename $so`
-		cp $so /usr/lib
-		niReg /usr/lib/$base /usr/etc/primesense/$hdir
+		cp $so ${DESTDIR}/usr/lib
+		niReg ${DESTDIR}/usr/lib/$base ${DESTDIR}/etc/primesense/$hdir
 	done
 done
 
-if [ -f /usr/bin/gmcs ]
+if [ -f ${DESTDIR}/usr/bin/gmcs ]
 then
 	for net in `ls -1 Bin/*dll`
 	do
 		gacutil -i $net -package 2.0
 		netdll=`basename $net`
-		echo $netdll >> /usr/etc/primesense/XnVNITE.net.dll.list
+		echo $netdll >> ${DESTDIR}/etc/primesense/XnVNITE.net.dll.list
 	done
 fi
 
