@@ -21,6 +21,10 @@ override_dh_auto_install:
 		$(NITEFILES)/Features_1_3_0/Data/s.dat \
 		$(packageinstall)/etc/primesense/Features_1_3_0
 	install -d $(packageinstall)/usr/lib
+	install -p $(NITEFILES)/Bin/libXnVNite*.so \
+		$(packageinstall)/usr/lib
+	install -p $(NITEFILES)/Bin/libXnVCNITE*.so \
+		$(packageinstall)/usr/lib
 	install -p $(NITEFILES)/Features_1_3_0/Bin/libXnVFeatures.so \
 		$(packageinstall)/usr/lib
 	install -d $(packageinstall)/etc/primesense/Features_1_3_1
